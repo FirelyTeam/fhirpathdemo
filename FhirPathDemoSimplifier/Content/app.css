@@ -1,0 +1,10 @@
+﻿.main-menu {
+  border-bottom: 1px solid #ddd;
+  padding: 5px 1em;
+}
+.fh {
+  min-height: 500px;
+}
+.CodeMirror {
+  border: 1px solid #ddd;
+}
