@@ -1,12 +1,11 @@
 ﻿# CoffeeScript
-#require('file?name=/index.html!jade-env-html!./index.jade')
+require('file?name=/index.html!jade-env-html!./index.jade')
+require('ng-cache?!jade-env-html!./404.jade')
+require('ng-cache?!jade-env-html!./_index.jade')
+require('./Content/app.less')
+require('angular-ui-codemirror')
 
-#require('ng-cache?!jade-env-html!./404.jade')
-#require('ng-cache?!jade-env-html!./_index.jade')
-#require('./Content/app.less')
-#require('angular-ui-codemirror')
-
-#fpath = require('../fhirpath.js/build/bundle.js')
+fpath = require('../fhirpath.js/build/bundle.js')
 # console.log(fpath)
 
 app = angular.module('app', [
