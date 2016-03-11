@@ -2,17 +2,7 @@
 (function() {
   var app, fpath;
 
-  require('file?name=/index.html!jade-env-html!./index.jade');
-
-  require('ng-cache?!jade-env-html!./404.jade');
-
-  require('ng-cache?!jade-env-html!./_index.jade');
-
-  require('./Content/app.less');
-
-  require('angular-ui-codemirror');
-
-  fpath = require('../fhirpath.js/build/bundle.js');
+  fpath = null;
 
   app = angular.module('app', ['ngCookies', 'ngRoute', 'ngAnimate', 'ui.codemirror', 'firebase']);
 
@@ -25,17 +15,21 @@
     rp = $routeProvider;
     rp.when('/', {
       name: 'index',
-      templateUrl: '_index.jade',
+      templateUrl: 'Client/app/partials/_index.html',
       controller: 'IndexCtrl',
       reloadOnSearch: false
     });
     return rp.otherwise({
-      templateUrl: '404.jade'
+      templateUrl: 'Client/app/partials/404.html'
     });
   });
 
   app.controller('IndexCtrl', function($scope, $firebaseObject) {
     var Save, codemirrorExtraKeys, fbRef;
+    require(['Client/app/vendor/fhirpath.js/build/bundle.js'], function(fhirpath) {
+      fpath = fhirpath;
+      return $scope.update();
+    });
     fbRef = new Firebase("https://fhirpath.firebaseio.com/");
     $scope.examples = $firebaseObject(fbRef);
     Save = function(data, cb) {
@@ -78,9 +72,10 @@
         return;
       }
       try {
-        result = webpackUniversalModuleDefinition(resource, $scope.path);
-        $scope.result = JSON.stringify(result[1], null, "  ");
-        return $scope.errors = null;
+        result = fpath.evaluate(resource, $scope.path);
+        $scope.result = JSON.stringify(result, null, "  ");
+        $scope.errors = null;
+        return $scope.error = null;
       } catch (_error) {
         e = _error;
         if (e.errors) {
@@ -91,7 +86,6 @@
         }
       }
     };
-    $scope.update();
     $scope.selectExample = function(ex) {
       $scope.resource = ex.resource;
       $scope.path = ex.path;

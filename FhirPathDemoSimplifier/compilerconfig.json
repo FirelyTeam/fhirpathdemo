@@ -1,10 +1,10 @@
 ﻿[
   {
-    "outputFile": "Content/app.css",
-    "inputFile": "Content/app.less"
+    "outputFile": "Client/app//css/app.css",
+    "inputFile": "Client/app/css/app.less"
   },
   {
-    "outputFile": "Scripts/app.js",
-    "inputFile": "Scripts/app.coffee"
+    "outputFile": "Client/app/app.js",
+    "inputFile": "Client/app/app.coffee"
   }
 ]

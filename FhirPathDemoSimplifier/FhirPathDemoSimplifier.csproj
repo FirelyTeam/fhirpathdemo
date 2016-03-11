@@ -219,60 +219,35 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\app.css">
+    <Content Include="Client\app\less\app.css">
       <DependentUpon>app.less</DependentUpon>
     </Content>
-    <Content Include="Content\app.min.css">
+    <Content Include="Client\app\less\app.min.css">
       <DependentUpon>app.css</DependentUpon>
     </Content>
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\Site.css" />
+    <Content Include="Client\app\partials\404.html" />
+    <Content Include="Client\app\partials\_index.html" />
     <Content Include="favicon.ico" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Scripts\ai.0.15.0-build58334.js" />
-    <Content Include="Scripts\ai.0.15.0-build58334.min.js" />
-    <Content Include="Scripts\app.js">
+    <Content Include="Client\app\app.js">
       <DependentUpon>app.coffee</DependentUpon>
     </Content>
-    <Content Include="Scripts\app.min.js">
+    <Content Include="Client\app\app.min.js">
       <DependentUpon>app.js</DependentUpon>
     </Content>
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Scripts\app.coffee" />
-    <Content Include="Content\app.less" />
+    <Content Include="Client\app\app.coffee" />
+    <Content Include="Client\app\less\app.less" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
     </None>
-    <Content Include="Scripts\fhirpath.js\fhirpath.js" />
-    <Content Include="Scripts\fhirpath.js\test-case-generator.js" />
-    <Content Include="Scripts\fhirpath.js\test-case-runner.js" />
-    <Content Include="Scripts\fhirpath.js\test.js" />
-    <Content Include="Scripts\fhirpath.js\vendor\fhirpath.g4" />
-    <Content Include="Scripts\fhirpath.js\package.json" />
-    <Content Include="Scripts\fhirpath.js\test-case-dump.json" />
-    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\fhirpath.js\build\bundle.js" />
-    <Content Include="Scripts\fhirpath.js\webpack.config.js" />
-    <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
-    <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="Scripts\require.js" />
-    <Content Include="Scripts\respond.js" />
-    <Content Include="Scripts\respond.min.js" />
-    <Content Include="Scripts\sammy-0.7.4.js" />
-    <Content Include="Scripts\sammy-0.7.4.min.js" />
-    <Content Include="Scripts\_references.js" />
-    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Client\app\vendor\fhirpath.js\build\bundle.js" />
+    <Content Include="Client\app\vendor\require.js" />
+    <Content Include="Client\app\vendor\angular-ui-codemirror.min.js" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -288,15 +263,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

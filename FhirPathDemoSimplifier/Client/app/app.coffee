@@ -1,12 +1,5 @@
-﻿# CoffeeScript
-require('file?name=/index.html!jade-env-html!./index.jade')
-require('ng-cache?!jade-env-html!./404.jade')
-require('ng-cache?!jade-env-html!./_index.jade')
-require('./Content/app.less')
-require('angular-ui-codemirror')
-
-fpath = require('../fhirpath.js/build/bundle.js')
-# console.log(fpath)
+﻿
+fpath = null;
 
 app = angular.module('app', [
   'ngCookies'
@@ -23,14 +16,17 @@ app.config ($routeProvider) ->
   rp = $routeProvider
   rp.when '/',
     name: 'index'
-    templateUrl: '_index.jade'
+    templateUrl: 'Client/app/partials/_index.html'
     controller: 'IndexCtrl'
     reloadOnSearch: false
-  rp.otherwise templateUrl: '404.jade'
-
-
+  rp.otherwise templateUrl: 'Client/app/partials/404.html'
 
 app.controller 'IndexCtrl', ($scope, $firebaseObject) ->
+
+  require(['Client/app/vendor/fhirpath.js/build/bundle.js'], (fhirpath) ->
+     fpath = fhirpath; 
+     $scope.update();
+  );
 
   fbRef = new Firebase("https://fhirpath.firebaseio.com/")
   $scope.examples = $firebaseObject(fbRef);
@@ -47,7 +43,6 @@ app.controller 'IndexCtrl', ($scope, $firebaseObject) ->
       obj.$save().then ->
         cb()
 
-
   $scope.saveExample = ()->
     $scope.saving = "Saving..."
     Save path: $scope.path, name: $scope.exampleName, resource: $scope.resource, ->
@@ -55,6 +50,7 @@ app.controller 'IndexCtrl', ($scope, $firebaseObject) ->
 
   $scope.path = 'Patient.name.given |  Patient.name.given'
   $scope.resource = '{"resourceType": "Patient", "name": [{"given": ["John"]}]}'
+  
   $scope.update = ()->
     try
       resource = JSON.parse($scope.resource)
@@ -64,10 +60,10 @@ app.controller 'IndexCtrl', ($scope, $firebaseObject) ->
       return
 
     try
-      #result=fpath(resource, $scope.path)
-      result = webpackUniversalModuleDefinition(resource, $scope.path)
-      $scope.result = JSON.stringify(result[1], null, "  ")
+      result = fpath.evaluate(resource, $scope.path);
+      $scope.result = JSON.stringify(result, null, "  ")
       $scope.errors = null
+      $scope.error = null
     catch e
       if e.errors
         $scope.errors = e.errors
@@ -75,8 +71,7 @@ app.controller 'IndexCtrl', ($scope, $firebaseObject) ->
       else
         $scope.error = e.toString()
         # throw e
-  $scope.update()
-
+        
   $scope.selectExample = (ex)->
     $scope.resource = ex.resource
     $scope.path = ex.path
@@ -96,4 +91,3 @@ app.controller 'IndexCtrl', ($scope, $firebaseObject) ->
     mode: 'javascript'
     extraKeys: codemirrorExtraKeys,
     viewportMargin: Infinity
-
