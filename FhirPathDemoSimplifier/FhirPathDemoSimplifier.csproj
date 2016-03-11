@@ -227,6 +227,7 @@
     </Content>
     <Content Include="Client\app\partials\404.html" />
     <Content Include="Client\app\partials\_index.html" />
+    <Content Include="Client\app\vendor\fhirpath.js\bundle.js" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Client\app\app.js">
@@ -244,7 +245,6 @@
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
     </None>
-    <Content Include="Client\app\vendor\fhirpath.js\build\bundle.js" />
     <Content Include="Client\app\vendor\require.js" />
     <Content Include="Client\app\vendor\angular-ui-codemirror.min.js" />
     <Content Include="Views\Home\Index.cshtml" />

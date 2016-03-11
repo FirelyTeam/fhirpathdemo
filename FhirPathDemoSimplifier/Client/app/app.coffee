@@ -23,7 +23,7 @@ app.config ($routeProvider) ->
 
 app.controller 'IndexCtrl', ($scope, $firebaseObject) ->
 
-  require(['Client/app/vendor/fhirpath.js/build/bundle.js'], (fhirpath) ->
+  require(['Client/app/vendor/fhirpath.js/bundle.js'], (fhirpath) ->
      fpath = fhirpath; 
      $scope.update();
   );

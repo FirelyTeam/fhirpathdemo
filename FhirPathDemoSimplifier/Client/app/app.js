@@ -26,7 +26,7 @@
 
   app.controller('IndexCtrl', function($scope, $firebaseObject) {
     var Save, codemirrorExtraKeys, fbRef;
-    require(['Client/app/vendor/fhirpath.js/build/bundle.js'], function(fhirpath) {
+    require(['Client/app/vendor/fhirpath.js/bundle.js'], function(fhirpath) {
       fpath = fhirpath;
       return $scope.update();
     });
