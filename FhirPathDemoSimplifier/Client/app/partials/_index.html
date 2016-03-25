@@ -12,6 +12,17 @@
     </div>
 </div>
 
+<div class="container" ng-if="isDemoMode">
+    <br />
+    Examples: &nbsp;
+    <span ng-repeat="(k,ex) in examples">
+        <a ng-click="selectExample(ex)">
+            {{ex.name}}
+        </a>
+        &nbsp;
+    </span>
+</div>
+
 <div class="container">
     <br />
     <div class="row">
@@ -27,11 +38,19 @@
                 {{error}}
             </div>
         </div>
+        <div class="col-xs-3" ng-if="isDemoMode">
+            <input class="form-control" placeholder="Save as" ng-model="exampleName" />
+        </div>
+        <div class="col-xs-1" ng-if="isDemoMode">
+            <button class="btn btn-success" ng-click="saveExample()">
+                Save
+            </button>
+        </div>
     </div>
     <div class="row">
         <div class="col-xs-8">
             <textarea ng-model="resource" ui-codemirror="codemirrorConfig" ng-change="update()" class="fh form-control"></textarea>
-            <br />
+            <br/>
             <div class="alert alert-danger" ng-if="parseError">
                 {{parseError}}
             </div>
@@ -40,4 +59,16 @@
             <textarea ng-model="result" ui-codemirror="codemirrorConfig" class="fh form-control"></textarea>
         </div>
     </div>
+
+    <div ng-if="!isDemoMode" class="row">
+        <button class="btn btn-success" ng-click="goToDemoMode()">
+            Switch to demo mode
+        </button>
+    </div>
+    <div ng-if="isDemoMode" class="row">
+        <button class="btn btn-success" ng-click="goToResource()">
+            Switch to resource
+        </button>
+    </div>
 </div>
+

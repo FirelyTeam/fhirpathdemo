@@ -1,4 +1,7 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
+using FhirPathDemoSimplifier.ViewModels;
+using Hl7.Fhir.Rest;
 
 namespace FhirPathDemoSimplifier.Controllers
 { 
@@ -6,24 +9,21 @@ namespace FhirPathDemoSimplifier.Controllers
     {
         public ActionResult Index(string endpoint = null)
         {
-            var resourceEndpoint = new ResourceReferenceViewModel()
+            ResourceIdentityViewModel resourceEndpoint = null;
+
+            if (!string.IsNullOrEmpty(endpoint))
             {
-                BaseUrl = "https://localhost:44302/api/fhir",
-                ResourceType = "NamingSystem",
-                ResourceId = "spark4"
-            };
+                var resourceIdentity = new ResourceIdentity(endpoint);
+
+                resourceEndpoint = new ResourceIdentityViewModel()
+                {
+                    BaseUrl = resourceIdentity.BaseUri.OriginalString,
+                    ResourceType = resourceIdentity.ResourceType,
+                    ResourceId = resourceIdentity.Id
+                };
+            }
 
             return View(resourceEndpoint);
         }
-    }
-
-    public class ResourceReferenceViewModel
-    {
-        public string BaseUrl { get; set; }
-
-        public string ResourceType { get; set; }
-
-        public string ResourceId { get; set; }
-
     }
 }

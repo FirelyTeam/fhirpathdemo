@@ -23,12 +23,8 @@ app.config ($routeProvider) ->
   rp.when '/',
     name: 'index'
     templateUrl: 'Client/app/partials/_index.html'
-    controller: 'IndexCtrl'           
-    reloadOnSearch: false
-  rp.when '/demo',
-    name: 'demo'
-    templateUrl: 'Client/app/partials/_demo.html'
-    controller: 'DemoCtrl'
+    controller: 'IndexCtrl'  
     reloadOnSearch: false
   rp.otherwise templateUrl: 'Client/app/partials/404.html'
+  
   

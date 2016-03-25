@@ -28,12 +28,6 @@
       controller: 'IndexCtrl',
       reloadOnSearch: false
     });
-    rp.when('/demo', {
-      name: 'demo',
-      templateUrl: 'Client/app/partials/_demo.html',
-      controller: 'DemoCtrl',
-      reloadOnSearch: false
-    });
     return rp.otherwise({
       templateUrl: 'Client/app/partials/404.html'
     });
