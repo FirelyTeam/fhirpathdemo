@@ -1,10 +1,18 @@
 ﻿[
   {
-    "outputFile": "Client/app//css/app.css",
-    "inputFile": "Client/app/css/app.less"
+    "outputFile": "Client/app/less/app.css",
+    "inputFile": "Client/app/less/app.less"
   },
   {
     "outputFile": "Client/app/app.js",
     "inputFile": "Client/app/app.coffee"
+  },
+  {
+    "outputFile": "Client/app/controllers/demoCtrl.js",
+    "inputFile": "Client/app/controllers/demoCtrl.coffee"
+  },
+  {
+    "outputFile": "Client/app/controllers/indexCtrl.js",
+    "inputFile": "Client/app/controllers/indexCtrl.coffee"
   }
 ]

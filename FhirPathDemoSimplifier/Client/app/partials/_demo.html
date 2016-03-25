@@ -14,6 +14,17 @@
 
 <div class="container">
     <br />
+    Examples: &nbsp;
+    <span ng-repeat="(k,ex) in examples">
+        <a ng-click="selectExample(ex)">
+            {{ex.name}}
+        </a>
+        &nbsp;
+    </span>
+</div>
+
+<div class="container">
+    <br />
     <div class="row">
         <div class="col-xs-8">
             <input class="form-control" placeholder="fhir path" ng-model="path" ng-change="update()" />
@@ -26,6 +37,14 @@
             <div class="alert alert-danger" ng-if="error">
                 {{error}}
             </div>
+        </div>
+        <div class="col-xs-3">
+            <input class="form-control" placeholder="Save as" ng-model="exampleName" />
+        </div>
+        <div class="col-xs-1">
+            <button class="btn btn-success" ng-click="saveExample()">
+                Save
+            </button>
         </div>
     </div>
     <div class="row">
@@ -41,3 +60,4 @@
         </div>
     </div>
 </div>
+
