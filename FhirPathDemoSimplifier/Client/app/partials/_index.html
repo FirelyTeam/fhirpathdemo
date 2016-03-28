@@ -60,12 +60,17 @@
         </div>
     </div>
 
-    <div ng-if="!isDemoMode" class="row">
+    <div ng-if="resourceIdentityModel.CallbackUrl && !isDemoMode" class="row pull-left">
+        <button class="btn btn-success" ng-click="goBack()">
+            Go back
+        </button>
+    </div>
+    <div ng-if="!isDemoMode" class="row pull-right">
         <button class="btn btn-success" ng-click="goToDemoMode()">
             Switch to demo mode
         </button>
     </div>
-    <div ng-if="isDemoMode" class="row">
+    <div ng-if="isDemoMode && resourceIdentityModel" class="row pull-right">
         <button class="btn btn-success" ng-click="goToResource()">
             Switch to resource
         </button>

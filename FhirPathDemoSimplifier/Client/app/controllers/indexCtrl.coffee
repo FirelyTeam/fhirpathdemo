@@ -6,7 +6,11 @@ app.controller 'IndexCtrl', ($scope, $firebaseObject, fhirServer, resourceIdenti
      fpath = fhirpath; 
   );
       
+  $scope.resourceIdentityModel = resourceIdentityModel;
   $scope.isDemoMode = resourceIdentityModel == null; 
+  
+  $scope.goBack = () ->
+    window.location = $scope.resourceIdentityModel.CallbackUrl;
   
   $scope.goToDemoMode = () ->
     resetValues();

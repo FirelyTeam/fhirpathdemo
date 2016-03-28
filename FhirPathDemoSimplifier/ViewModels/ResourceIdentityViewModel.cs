@@ -7,5 +7,7 @@
         public string ResourceType { get; set; }
 
         public string ResourceId { get; set; }
+
+        public string CallbackUrl { get; set; }
     }
 }

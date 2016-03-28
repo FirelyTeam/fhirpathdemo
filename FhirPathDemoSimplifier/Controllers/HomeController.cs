@@ -1,5 +1,4 @@
-﻿using System;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using FhirPathDemoSimplifier.ViewModels;
 using Hl7.Fhir.Rest;
 
@@ -7,7 +6,7 @@ namespace FhirPathDemoSimplifier.Controllers
 { 
     public class HomeController : Controller
     {
-        public ActionResult Index(string endpoint = null)
+        public ActionResult Index(string endpoint = null, string callbackurl = null)
         {
             ResourceIdentityViewModel resourceEndpoint = null;
 
@@ -19,7 +18,8 @@ namespace FhirPathDemoSimplifier.Controllers
                 {
                     BaseUrl = resourceIdentity.BaseUri.OriginalString,
                     ResourceType = resourceIdentity.ResourceType,
-                    ResourceId = resourceIdentity.Id
+                    ResourceId = resourceIdentity.Id,
+                    CallbackUrl = callbackurl
                 };
             }
 

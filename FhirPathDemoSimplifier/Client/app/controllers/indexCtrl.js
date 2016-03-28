@@ -6,7 +6,11 @@
     require(['Client/app/vendor/fhirpath.js/bundle.js'], function(fhirpath) {
       return fpath = fhirpath;
     });
+    $scope.resourceIdentityModel = resourceIdentityModel;
     $scope.isDemoMode = resourceIdentityModel === null;
+    $scope.goBack = function() {
+      return window.location = $scope.resourceIdentityModel.CallbackUrl;
+    };
     $scope.goToDemoMode = function() {
       var fbRef;
       resetValues();
