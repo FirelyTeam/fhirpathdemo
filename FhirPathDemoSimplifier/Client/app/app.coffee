@@ -4,7 +4,6 @@ window.app = angular.module('app', [
   'ngRoute'
   'ngAnimate'
   'ui.codemirror'
-  'firebase'
 ]) 
     
 app.factory "fhirServer", () ->  
@@ -23,7 +22,14 @@ app.config ($routeProvider) ->
   rp.when '/',
     name: 'index'
     templateUrl: 'Client/app/partials/_index.html'
-    controller: 'IndexCtrl'  
+    controller: 'IndexCtrl'
+    resolve: {
+        resourceIdentityModel: (resourceIdentityModel, $location) ->
+            if resourceIdentityModel == null
+                $location.path("error")
+            else 
+                resourceIdentityModel
+    }
     reloadOnSearch: false
   rp.otherwise templateUrl: 'Client/app/partials/404.html'
   

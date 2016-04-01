@@ -1,32 +1,8 @@
 ﻿
-<div class="main-menu row">
-    <div class="container">
-        <div class="col-xs-10">
-            <h3>
-                FHIRpath<small> fhir path implementation in js</small>
-            </h3>
-        </div>
-        <div class="col-xs-2">
-            <h3><a href="https://github.com/jmandel/fhirpath.js">src/</a></h3>
-        </div>
-    </div>
-</div>
-
-<div class="container" ng-if="isDemoMode">
-    <br />
-    Examples: &nbsp;
-    <span ng-repeat="(k,ex) in examples">
-        <a ng-click="selectExample(ex)">
-            {{ex.name}}
-        </a>
-        &nbsp;
-    </span>
-</div>
-
 <div class="container">
     <br />
     <div class="row">
-        <div class="col-xs-8">
+        <div class="col-xs-24">
             <input class="form-control" placeholder="fhir path" ng-model="path" ng-change="update()" />
             <br />
             <div class="alert alert-danger" ng-if="errors">
@@ -38,41 +14,23 @@
                 {{error}}
             </div>
         </div>
-        <div class="col-xs-3" ng-if="isDemoMode">
-            <input class="form-control" placeholder="Save as" ng-model="exampleName" />
-        </div>
-        <div class="col-xs-1" ng-if="isDemoMode">
-            <button class="btn btn-success" ng-click="saveExample()">
-                Save
-            </button>
-        </div>
     </div>
     <div class="row">
-        <div class="col-xs-8">
+        <div class="col-xs-16">
             <textarea ng-model="resource" ui-codemirror="codemirrorConfig" ng-change="update()" class="fh form-control"></textarea>
             <br/>
             <div class="alert alert-danger" ng-if="parseError">
                 {{parseError}}
             </div>
         </div>
-        <div class="col-xs-4">
+        <div class="col-xs-8">
             <textarea ng-model="result" ui-codemirror="codemirrorConfig" class="fh form-control"></textarea>
         </div>
     </div>
 
-    <div ng-if="resourceIdentityModel.CallbackUrl && !isDemoMode" class="row pull-left">
+    <div ng-if="showReturnButton()" class="row pull-left go-back">
         <button class="btn btn-success" ng-click="goBack()">
             Go back
-        </button>
-    </div>
-    <div ng-if="!isDemoMode" class="row pull-right">
-        <button class="btn btn-success" ng-click="goToDemoMode()">
-            Switch to demo mode
-        </button>
-    </div>
-    <div ng-if="isDemoMode && resourceIdentityModel" class="row pull-right">
-        <button class="btn btn-success" ng-click="goToResource()">
-            Switch to resource
         </button>
     </div>
 </div>
