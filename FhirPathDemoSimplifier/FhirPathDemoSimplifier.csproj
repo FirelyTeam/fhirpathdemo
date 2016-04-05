@@ -246,6 +246,7 @@
     <Content Include="Client\app\vendor\fhir.js\fhir.js" />
     <Content Include="Client\app\vendor\fhir.js\jqAdapter.js" />
     <Content Include="Client\app\vendor\fhirpath.js\bundle.js" />
+    <Content Include="Client\app\vendor\polyfill.js" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Client\app\app.js">
