@@ -38,14 +38,18 @@
         result = fpath.evaluate(resource, $scope.path);
         $scope.result = JSON.stringify(result, null, "  ");
         $scope.errors = null;
-        return $scope.error = null;
+        $scope.error = null;
+        return $scope.successMessage = "Your fluent path compliles correctly.";
       } catch (_error) {
         e = _error;
         if (e.errors) {
+          $scope.successMessage = null;
+          $scope.error = null;
           $scope.errors = e.errors;
           return console.log("ERROR", e.errors);
         } else {
-            $scope.errors = null;
+          $scope.successMessage = null;
+          $scope.errors = null;
           return $scope.error = e.toString();
         }
       }

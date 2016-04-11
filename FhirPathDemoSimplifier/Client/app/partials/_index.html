@@ -13,6 +13,11 @@
             <div class="alert alert-danger" ng-if="error">
                 {{error}}
             </div>
+            <div class="alert alert-success" ng-if="successMessage">
+                {{successMessage}}
+            </div>
+            <div class="spacer" ng-if="!successMessage && !error && !errors">
+            </div>
         </div>
     </div>
     <div class="row">
@@ -21,6 +26,8 @@
             <br/>
             <div class="alert alert-danger" ng-if="parseError">
                 {{parseError}}
+            </div>
+            <div class="spacer" ng-if="!parseError">
             </div>
         </div>
         <div class="col-xs-8">

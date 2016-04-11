@@ -37,11 +37,16 @@ app.controller 'IndexCtrl', ($scope, fhirServer, resourceIdentityModel) ->
       $scope.result = JSON.stringify(result, null, "  ")
       $scope.errors = null
       $scope.error = null
+      $scope.successMessage = "Your fluent path compliles correctly."
     catch e
       if e.errors
+        $scope.successMessage = null
+        $scope.error = null
         $scope.errors = e.errors
         console.log("ERROR", e.errors)
       else
+        $scope.successMessage = null
+        $scope.errors = null;
         $scope.error = e.toString()
         # throw e
      
