@@ -45,6 +45,7 @@
           $scope.errors = e.errors;
           return console.log("ERROR", e.errors);
         } else {
+            $scope.errors = null;
           return $scope.error = e.toString();
         }
       }
