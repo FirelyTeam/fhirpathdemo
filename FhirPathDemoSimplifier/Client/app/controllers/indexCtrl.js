@@ -26,31 +26,38 @@
     };
     $scope.update = function() {
       var e, resource, result;
-      try {
-        resource = JSON.parse($scope.resource);
-        $scope.parseError = null;
-      } catch (_error) {
-        e = _error;
-        $scope.parseError = e.toString();
-        return;
-      }
-      try {
-        result = fpath.evaluate(resource, $scope.path);
-        $scope.result = JSON.stringify(result, null, "  ");
-        $scope.errors = null;
-        $scope.error = null;
-        return $scope.successMessage = "Your fluent path compliles correctly.";
-      } catch (_error) {
-        e = _error;
-        if (e.errors) {
-          $scope.successMessage = null;
-          $scope.error = null;
-          $scope.errors = e.errors;
-          return console.log("ERROR", e.errors);
-        } else {
-          $scope.successMessage = null;
+      if ($scope.path === void 0 || $scope.path === "") {
+        return $scope.successMessage = "You can enter your fluentpath in the input field above.";
+      } else if ($scope.resource === void 0 || $scope.resource === "") {
+        $scope.result = null;
+        return $scope.successMessage = "You can enter your fluentpath expression below.";
+      } else {
+        try {
+          resource = JSON.parse($scope.resource);
+          $scope.parseError = null;
+        } catch (_error) {
+          e = _error;
+          $scope.parseError = e.toString();
+          return;
+        }
+        try {
+          result = fpath.evaluate(resource, $scope.path);
+          $scope.result = JSON.stringify(result, null, "  ");
           $scope.errors = null;
-          return $scope.error = e.toString();
+          $scope.error = null;
+          return $scope.successMessage = "Your fluent path compliles correctly.";
+        } catch (_error) {
+          e = _error;
+          if (e.errors) {
+            $scope.successMessage = null;
+            $scope.error = null;
+            $scope.errors = e.errors;
+            return console.log("ERROR", e.errors);
+          } else {
+            $scope.successMessage = null;
+            $scope.errors = null;
+            return $scope.error = e.toString();
+          }
         }
       }
     };
