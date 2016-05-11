@@ -232,6 +232,7 @@
       <DependentUpon>indexCtrl.js</DependentUpon>
     </Content>
     <Content Include="Client\app\img\favicon.ico" />
+    <Content Include="Client\app\img\loading.gif" />
     <Content Include="Client\app\img\simplifier.png" />
     <Content Include="Client\app\less\app.css">
       <DependentUpon>app.less</DependentUpon>
@@ -243,6 +244,7 @@
     <Content Include="Client\app\partials\_index.html" />
     <Content Include="Client\app\vendor\bootstrap\bootstrap.css" />
     <Content Include="Client\app\vendor\bootstrap\bootstrap.min.js" />
+    <Content Include="Client\app\vendor\common.js" />
     <Content Include="Client\app\vendor\fhir.js\fhir.js" />
     <Content Include="Client\app\vendor\fhir.js\jqAdapter.js" />
     <Content Include="Client\app\vendor\fhirpath.js\bundle.js" />

@@ -5,16 +5,19 @@ app.controller 'IndexCtrl', ($scope, fhirServer, resourceIdentityModel) ->
   require(['Client/app/vendor/fhirpath.js/bundle.js'], (fhirpath) ->
      fpath = fhirpath; 
   );
-  
+  Common.showLoading($('#resoruceInputContainer'));
   server = fhirServer(resourceIdentityModel.BaseUrl);      
    
   server.read(
         id: resourceIdentityModel.ResourceId
         resourceType: resourceIdentityModel.ResourceType
         success: (data) -> 
-            $scope.resource = JSON.stringify(data, null, 4);
+            $scope.resource = JSON.stringify(data, null, 4);     
+            $scope.update();
             $scope.$apply('doMapping()')
+            Common.hideLoading($('#resoruceInputContainer'));
         error: (error) ->
+            Common.hideLoading($('#resoruceInputContainer'));
             console.log(error)
     );
     
