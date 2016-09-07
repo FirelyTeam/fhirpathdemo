@@ -31,10 +31,10 @@
     $scope.update = function() {
       var e, resource, result;
       if ($scope.path === void 0 || $scope.path === "") {
-        return $scope.successMessage = "You can enter your fluentpath in the input field above.";
+        return $scope.successMessage = "You can enter your FhirPath in the input field above.";
       } else if ($scope.resource === void 0 || $scope.resource === "") {
         $scope.result = null;
-        return $scope.successMessage = "You can enter your fluentpath expression below.";
+        return $scope.successMessage = "You can enter your FhirPath expression below.";
       } else {
         try {
           resource = JSON.parse($scope.resource);
@@ -49,7 +49,7 @@
           $scope.result = JSON.stringify(result, null, "  ");
           $scope.errors = null;
           $scope.error = null;
-          return $scope.successMessage = "Your fluent path compliles correctly.";
+          return $scope.successMessage = "Your FhirPath compiles correctly.";
         } catch (_error) {
           e = _error;
           if (e.errors) {

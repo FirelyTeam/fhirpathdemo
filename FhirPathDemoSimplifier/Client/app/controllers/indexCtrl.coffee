@@ -29,10 +29,10 @@ app.controller 'IndexCtrl', ($scope, fhirServer, resourceIdentityModel) ->
             
   $scope.update = () ->
     if $scope.path is  undefined or $scope.path is "" 
-        $scope.successMessage = "You can enter your fluentpath in the input field above.";
+        $scope.successMessage = "You can enter your FhirPath in the input field above.";
     else if $scope.resource is undefined or $scope.resource is "" 
         $scope.result = null;
-        $scope.successMessage = "You can enter your fluentpath expression below.";
+        $scope.successMessage = "You can enter your FhirPath expression below.";
     else
         try
           resource = JSON.parse($scope.resource)
@@ -46,7 +46,7 @@ app.controller 'IndexCtrl', ($scope, fhirServer, resourceIdentityModel) ->
           $scope.result = JSON.stringify(result, null, "  ")
           $scope.errors = null
           $scope.error = null
-          $scope.successMessage = "Your fluent path compliles correctly."
+          $scope.successMessage = "Your FhirPath compiles correctly."
         catch e
           if e.errors
             $scope.successMessage = null
